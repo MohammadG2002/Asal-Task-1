@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <script>
+      const libraryBooks = [
+        {
+          title: "Book 1",
+          author: "Author A",
+          publishedYear: 2018,
+          availability: true,
+        },
+        {
+          title: "Book 2",
+          author: "Author B",
+          publishedYear: 2022,
+          availability: true,
+        },
+        {
+          title: "Book 3",
+          author: "Author C",
+          publishedYear: 2016,
+          availability: false,
+        },
+        {
+          title: "Book 4",
+          author: "Author D",
+          publishedYear: 2014,
+          availability: false,
+        },
+        {
+          title: "Book 5",
+          author: "Author E",
+          publishedYear: 2024,
+          availability: false,
+        },
+        {
+          title: "Book 6",
+          author: "Author F",
+          publishedYear: 2025,
+          availability: true,
+        },
+        {
+          title: "Book 7",
+          author: "Author G",
+          publishedYear: 2011,
+          availability: false,
+        },
+        {
+          title: "Book 8",
+          author: "Author H",
+          publishedYear: 2016,
+          availability: false,
+        },
+      ];
+
+      // 1. How could you use the map() method to create an array
+      //  containing only the titles of the available books published
+      //  within the last 5 years?
+      const latest = [];
+      const currentYear = new Date().getFullYear();
+      libraryBooks.map((book) =>
+        currentYear - book.publishedYear <= 5 && book.availability == true
+          ? latest.push(book.title)
+          : null
+      );
+      console.log(latest);
+
+      // 2. Can you demonstrate how the forEach() method could be used to
+      //  print out the details of each available book published within
+      //  the last 5 years?
+      libraryBooks.forEach((book, index) => {
+        if (
+          currentYear - book.publishedYear <= 5 &&
+          book.availability == true
+        ) {
+          console.log(
+            `Title: ${book.title} ${book.author}. Published in: ${book.publishedYear} => Available: ${book.availability}`
+          );
+        }
+      });
+
+      // 3. Using the reduce() method, how might you calculate the total number
+      //  of available books in the library?
+      let num = 0;
+      libraryBooks.reduce((total, book, index) => {
+        if (book.availability) {
+          num++;
+        }
+      });
+      console.log(`Number of available books: ${num}`);
+
+      // 4. What steps would you take to sort the libraryBooks array based on
+      //  the publication year in ascending order?
+      libraryBooks.sort((a, b) => a.publishedYear - b.publishedYear);
+      console.log(libraryBooks);
+
+      // 5. How could you find the book with the earliest publication year using
+      //  the reduce() method?
+      let x = libraryBooks[0];
+      libraryBooks.reduce((total, book) => {
+        if (book.publishedYear > x.publishedYear) x = book;
+      });
+      console.log(x);
+
+      // 6. If you wanted to change the availability of all books published in
+      //  2016 to true, which method would you use, and how?
+      libraryBooks.forEach((book) => {
+        if (book.availability == false && book.publishedYear == 2016)
+          book.availability = true;
+      });
+      console.log(libraryBooks);
+
+      // 7. Suppose you need to retrieve the index of the first available book in
+      //  the library. How could you achieve this using the appropriate method?
+      let i = libraryBooks.findIndex((book) => book.availability == true);
+      console.log(i);
+
+      // 8. How could you ensure that the libraryBooks array remains unchanged
+      // while applying these filtering and manipulation methods?
+      // By making copies of the array, or use methods that return new arrays.
+      // like methods other than (push, shift, etc.)
+    </script>
+  </body>
+</html>

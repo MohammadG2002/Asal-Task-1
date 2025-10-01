@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      const plusSeven = (num) => num + 7;
+
+      const deepEquals1 = (a, b, description = ".") => {
+        if (description === undefined) {
+          description = "..";
+        }
+        if (a === b) {
+          let message = `test passed, ${a} deeply equals ${b} ${description}`;
+          return message;
+        } else {
+          return `test failed ${description}`;
+        }
+      };
+
+      deepEquals1(plusSeven(6), 13); // output should be 'test passed, 13 deeply equals 13'
+      deepEquals1(plusSeven(6), 13, ": 6 plus 7 should equal 13"); // output should be 'test passed, 13 deeply equals 13: 6 plus 7 should equal 13'
+
+      const deepEquals2 = ({ expected, actual, description = "." }) => {
+        if (description === undefined) {
+          description = "";
+        }
+
+        if (expected === actual) {
+          let message = `test passed, ${expected} deeply equals ${actual} ${description}`;
+          return message;
+        } else {
+          return `test failed ${description}`;
+        }
+      };
+
+      let obj = { expected: 10, actual: 10 };
+      let objWithDesc = {
+        expected: 15,
+        actual: 15,
+        description: ": 5 plus 10 should equal 15",
+      };
+      deepEquals2(objWithDesc);
+      //should return 'test passed, 15 deeply equals 15: 5 plus 10 should equal 15'
+      deepEquals2(obj);
+      //should return 'test passed, 10 deeply equals 10'
+
+      const uniqueVals = (arr1, arr2) => {
+        let joinedArrs = new Set([...arr1, ...arr2]);
+        console.log(...joinedArrs);
+      };
+      const arr1 = [1, 5, 6];
+      const arr2 = [3, 5, 6];
+
+      uniqueVals(arr1, arr2); // should console.log 1 5 6 3
+
+      // 1. Replace all function declarations in the code with arrow functions => Done
+      // 2. Replace all vars in the code => done
+      // 3. Replace all string concatination with template strings => done
+      // 4. Use default parameter value for description in deepEquals1 => done
+      // 5. Use default value for description in deepEquals1 => done
+      // 6. DeepEquals2 does the same as deepEquals1 but it takes an object,
+      //    use destructuring to access the properties in the object => done
+      // 7. Use a default value for description in deepEquals2 => done
+      // 8. Use Set and the spread operator to refactor the uniqueVals function => done
+    </script>
+  </body>
+</html>

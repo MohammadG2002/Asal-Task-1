@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <script>
+      const colorsArray = ["yellow", "red", "turquoise", "green", "blue"];
+
+      // 1. use the filter method to create an array with all colors from
+      //  colorsArray that are longer than 5 letters long. expected answer is
+      //  [ 'yellow', 'turquoise']
+      const longColor = colorsArray.filter((color) => color.length > 5);
+      console.log(longColor);
+
+      // 2. a) use the forEach method to create an array that has each color
+      //  from colorsArray in capital letters. expected answer is
+      //  [ 'YELLOW', 'RED', 'TURQUOISE', 'GREEN', 'BLUE' ]
+      const upperColor1 = [];
+      colorsArray.forEach((color, i) => upperColor1.push(color.toUpperCase()));
+      console.log(upperColor1);
+
+      // 2. b) create the same array using the map method
+      const upperColor2 = colorsArray.map((color) => color.toUpperCase());
+      console.log(upperColor2);
+
+      // 3. Use the map method to create an array containing the lengths of
+      //  each color name in colorsArray. Expected answer: [ 6, 3, 9, 5, 4 ]
+      const colorLength = colorsArray.map((color) => color.length);
+      console.log(colorLength);
+
+      // 4. Use the some method to check if any color in colorsArray contains
+      //  the letter "r". Expected answer: true
+      console.log(colorsArray.some((color) => color.includes("r")));
+
+      // 5. Use the every method to check if all colors in colorsArray have
+      //  more than 3 letters. Expected answer: false
+      console.log(colorsArray.every((color) => color.length > 3));
+
+      // 6. Use the reduce method to concatenate all colors in colorsArray
+      //  into a single string separated by a comma. Expected answer:
+      // 'yellow,red,turquoise,green,blue'
+      const colorString = `${colorsArray}`;
+      console.log(colorString);
+
+      // 7. Use the find method to find the first color in colorsArray that
+      //  starts with the letter "g". Expected answer: 'green'
+      console.log(colorsArray.find((color) => color.includes("g")));
+    </script>
+  </body>
+</html>
